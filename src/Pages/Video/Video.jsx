@@ -5,10 +5,12 @@ import Recommended from '../../Components/Recommended/Recommended'
 
 
 const Video = () => {
+
+  const {videoId,categoryId} = useParems();
   return (
     <div>
         <div className="play-container">
-             <PlayVideo/>
+             <PlayVideo videoId={videoId}/>
              <Recommended/>
         </div>
         
