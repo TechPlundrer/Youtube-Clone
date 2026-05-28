@@ -19,14 +19,19 @@ const PlayVideo = ({videoId}) => {
     await fetch(videoDetails_url).then(res=>res.json()).then(data => setApiData(data.items[0]))
   }
 
+    useEffect(() => {
+      fetchVideoData();
+    }, [])
+    
+
   return (
     <div className="play-video">
       {/* <video src={video1} controls autoPlay muted></video> */}
       <iframe src={`https://www.youtube.com/embed/${videoId}?autoplay=1`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-      <h3>Best Youtube channel to learn development</h3>
+      <h3>{apiData?apiData.snippet.title:"Title Here"}</h3>;
       <div className="play-video-info">
-        <p>1525 views &bull; 2 days ago</p>
+        <p>{apiData?apiData.statistics.viewCount:"16k"} views &bull; 2 days ago</p>
         <div>
           <span>
             <img src={like} alt="" /> 125
